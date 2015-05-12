@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= state_title(@state) %></title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="title"><%= state_header(@state) %></div>
+<p class="subtitle">
+  <% if @state %>
+    <%= legal_status(@state.status) %> in <%= @state.name %>
+  <% end %>
+</p>
+
+<div style="width: 100%; height: 625px;" id="map_element"></div>
+
+<%= yield %>
+
+<div class="fixed-footer">
+  <%= form_for :state, method: :get do |f| %>
+    <%= f.text_field(:name, class: "input-large input-block") %>
+  <% end %>
+</div>
+
+<script>
+  var stateData = <%= raw(@states_as_json) %>
+    window.stateData = stateData;
+</script>
+<%= javascript_include_tag('//cdn.rawgit.com/MaxArt2501/object-observe/v0.2.3/dist/object-observe.min.js') %>
+<%= javascript_include_tag('application') %>
+<%= javascript_include_tag('//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js') %>
+<%= javascript_include_tag('//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js') %>
+<%= javascript_include_tag('//cdn.rawgit.com/markmarkoh/datamaps/v0.2.10/dist/datamaps.usa.min.js') %>
+<%= javascript_include_tag 'states' %>
+<%= render 'layouts/google_analytics' %>
+</body>
+</html>

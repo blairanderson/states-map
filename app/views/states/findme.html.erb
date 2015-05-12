@@ -1,0 +1,29 @@
+<% content_for :javascripts_head do %>
+  <%= javascript_include_tag('https://cdn.rawgit.com/manuelbieh/jQuery-Geolocation/45de287de74dc73f784de08359d57fcba45801a1/jquery.geolocation.js') %>
+<% end %>
+
+Probably not
+<button>Find Me!</button>
+
+<script>
+  $(function() {
+    $('button').on('click', function(e) {
+      e.preventDefault()
+      $.geolocation.get({
+        success: function(geo) {
+          debugger
+          var time = geo.timestamp,
+            coords = geo.coords,
+            accuracy = coords.accuracy,
+            altitude = coords.altitude,
+            latitude = coords.latitude,
+            longitude = coords.longitude,
+            speed = coords.speed;
+        },
+        error: function() {
+          debugger
+        }
+      });
+    })
+  })
+</script>

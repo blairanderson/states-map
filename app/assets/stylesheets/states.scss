@@ -1,0 +1,47 @@
+// Place all the styles related to the states controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body{
+  font-family: Helvetica,Arial,sans-serif;
+  font-weight: 800;
+  color: #000;
+}
+
+.subtitle, .title {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+
+.title {
+  width: 100%;
+  margin: 0px auto;
+  line-height: 35px;
+  font-size: 45px;
+
+}
+
+.subtitle {
+  line-height: 20px;
+  font-size: 20px;
+
+  .rec {
+    color: #01FF70;
+  }
+  .med {
+    color: #3D9970;
+  }
+}
+
+.fixed-footer {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  width:100%;
+}
+
+input#state_name {
+  font-size: 30px;
+  text-align: center;
+}
